@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
         else
           tty_log = "/tmp/vagrant-tty.%s.log"
         end
-        tty_log_file = tty_log % name
+        tty_log_file = tty_log % [name]
         v.customize [
           "modifyvm",     :id,
           "--uartmode1",  "file",     tty_log_file,

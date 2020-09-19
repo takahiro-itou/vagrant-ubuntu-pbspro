@@ -4,6 +4,6 @@ scriptDir=$(dirname  $0)
 vagrantDir=${scriptDir}/../vagrant
 pushd  ${vagrantDir}
 
-vagrant  ssh
+vagrant  ssh  node00
 
 popd
