@@ -1,0 +1,6 @@
+#!/bin/bash
+
+file=/var/spool/pbs/mom_priv/config
+
+echo  '$jobdir_root /dev/shm'  >  ${file}
+echo  '$usecp *:/home /home'  >>  ${file}

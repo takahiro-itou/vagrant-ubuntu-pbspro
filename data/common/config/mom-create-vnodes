@@ -1,0 +1,16 @@
+#!/bin/bash  -xu
+
+host=`hostname -s`
+node="${host}.vnodes"
+file="./vnodes/${node}"
+pbs_mom='sudo /opt/pbs/sbin/pbs_mom'
+
+${pbs_mom}   -s  remove  ${node}
+
+#sudo  pkill -HUP -x  pbs_mom
+sudo  service  pbs  restart
+sleep  3
+
+${pbs_mom}  -s  insert  ${node}  ${file}
+#sudo  pkill -HUP -x  pbs_mom
+sudo  service  pbs  restart

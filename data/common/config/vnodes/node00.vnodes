@@ -1,0 +1,4 @@
+$configversion 2
+node00:    resources_available.ncpus = 32
+node00:    resources_available.mem = 38798604kb
+node00:    resources_available.ngpus = 4
