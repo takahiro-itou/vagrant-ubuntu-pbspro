@@ -1,0 +1,23 @@
+#!/bin/bash  -xu
+
+qmgr=/opt/pbs/bin/qmgr
+
+${qmgr}  -c "unset server managers"
+${qmgr}  -c "unset server operators"
+
+
+managers=users/managers.txt
+operators=users/operators.txt
+h='*'
+
+for u in `cat $managers`; do
+    ${qmgr}  -c "set server managers += ${u}@${h}"
+done
+
+for u in `cat $operators`; do
+    ${qgmr}  -c "set server operators += ${u}@${h}"
+done
+
+
+${qmgr}  -c "list server managers"
+${qmgr}  -c "list server operators"

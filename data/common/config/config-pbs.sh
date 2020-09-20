@@ -14,6 +14,12 @@ sudo  sed  -i.bak  \
     /etc/pbs.conf  ||  exit  $?
 echo  'PBS_SERVER_HOST_NAME=node00'  |  sudo  tee -a  /etc/pbs.conf
 
+pushd  ${scriptDir}
+sudo   /bin/bash  -xu  ./setup-users   ||  exit  $?
+/bin/bash  -xu  ./setup-server-config  ||  exit  $?
+/bin/bash  -xu  ./setup-server-queue   ||  exit  $?
+popd
+
 # マスター node00 がワーカーも兼ねるのでこれも実行
 /bin/bash  -xue  ${scriptDir}/worker-config-02.sh  ||  exit  $?
 

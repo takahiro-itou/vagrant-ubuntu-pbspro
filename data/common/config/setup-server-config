@@ -1,0 +1,32 @@
+#!/bin/bash  -xu
+
+qmgr=/opt/pbs/bin/qmgr
+
+##
+##  Resources
+##
+
+${qmgr}  -c "create resource ngpus type=long, flag=nh"
+
+${qmgr}  -c "list resource"
+
+##
+##  Scheduler
+##
+
+${qmgr}  -c "set sched do_not_span_psets = True"
+${qmgr}  -c "list sched"
+
+##
+##  Server
+##
+
+${qmgr}  -c "set server default_qsub_arguments = '-Wsandbox=PRIVATE -kdoe'"
+${qmgr}  -c "set server job_history_enable = True"
+${qmgr}  -c "unset server node_group_key"
+${qmgr}  -c "set server node_group_enable = True"
+${qmgr}  -c "set server node_fail_requeue = 0"
+${qmgr}  -c "set server flatuid = True"
+${qmgr}  -c "set server log_events = 255"
+${qmgr}  -c "set server backfill_depth = 100"
+${qmgr}  -c "set server resources_default.walltime=31536000"

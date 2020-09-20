@@ -1,0 +1,4 @@
+#!/bin/bash  -xu
+
+qmgr=/opt/pbs/bin/qmgr
+qstat=/opt/pbs/bin/qstat
