@@ -55,7 +55,7 @@ Vagrant.configure("2") do |config|
 
       node.vm.provision("file",
                         source:       "../data/",
-                        destination:  "/tmp")
+                        destination:  "/tmp/")
 
       node.vm.provision("root", type: "shell",
                         path: "provision.root.sh",
