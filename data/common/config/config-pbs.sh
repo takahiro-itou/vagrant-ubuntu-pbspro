@@ -14,6 +14,13 @@ sudo  sed  -i.bak  \
     /etc/pbs.conf  ||  exit  $?
 echo  'PBS_SERVER_HOST_NAME=node00'  |  sudo  tee -a  /etc/pbs.conf
 
+# マスター node00 がワーカーも兼ねるのでこれも実行
+sudo  /bin/bash  -xu  ./mom-reset-config    ||  exit  $?
+
+# ここでいったんデーモンを起動する
+sudo  service  pbs  start                   ||  exit  $?
+
+# サーバーとキューのセットアップ
 pushd  ${scriptDir}
 sudo   /bin/bash  -xu  ./setup-users   ||  exit  $?
 /bin/bash  -xu  ./setup-server-config  ||  exit  $?

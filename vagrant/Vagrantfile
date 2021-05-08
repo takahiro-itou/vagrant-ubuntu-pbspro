@@ -5,6 +5,7 @@ load  File.expand_path("DetectOS.rb")  if File.exists?("DetectOS.rb")
 
 Vagrant.configure("2") do |config|
   config.vm.box = "takahiro-itou/ubuntu-bionic64-pbspro"
+  config.ssh.insert_key = false
 
   format_private_name = "node%02d"
   format_private_ip = "192.168.64.%d"
